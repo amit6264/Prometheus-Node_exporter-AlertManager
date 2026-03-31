@@ -1,0 +1,11 @@
+groups:
+- name: node_alerts
+  rules:
+  - alert: NodeExporterDown
+    expr: up{job="node_exporter_metrics"} == 0
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Node Exporter is DOWN"
+      description: "The Node Exporter on instance {{ $labels.instance }} is not reachable."
