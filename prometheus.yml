@@ -8,15 +8,13 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - "56.228.7.54:9093"           #give your alert instance <private_ip>
+      - "<ALERTMANAGER_PRIVATE_IP>:9093"
 
 scrape_configs:
-- job_name: "prometheus"
-  scrape_interval: 5s
+- job_name: 'prometheus'
   static_configs:
-  - targets: ["localhost:9090"]
+  - targets: ['localhost:9090']
 
-- job_name: "node_exporter_metrics"
-  scrape_interval: 5s
+- job_name: 'node_exporter_metrics'
   static_configs:
-  - targets: ["172.31.17.136:9100"]    # give your node_exporter <private_ip>
+  - targets: ['<NODE_EXPORTER_PRIVATE_IP>:9100']
