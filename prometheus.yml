@@ -1,0 +1,22 @@
+global:
+  scrape_interval: 10s
+
+rule_files:
+  - "node_alerts.yml"
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - "56.228.7.54:9093"           #give your alert instance <private_ip>
+
+scrape_configs:
+- job_name: "prometheus"
+  scrape_interval: 5s
+  static_configs:
+  - targets: ["localhost:9090"]
+
+- job_name: "node_exporter_metrics"
+  scrape_interval: 5s
+  static_configs:
+  - targets: ["172.31.17.136:9100"]    # give your node_exporter <private_ip>
